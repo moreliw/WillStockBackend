@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WillStockBackend.Data;
+using WillStockBackend.Models;
 
 namespace WillStockBackend.Controllers
 {
@@ -15,11 +16,19 @@ namespace WillStockBackend.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public  IActionResult Index()
         {
             var products = _context.Produto.ToList();
-            HttpContext.Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:4200");
             return Ok(products);
+        }
+
+        [HttpPost]
+        public IActionResult Create(ProductModel product)
+        {
+            _context.Produto.Add(product);
+            _context.SaveChanges();
+
+            return Ok();
         }
     }
 }
