@@ -1,0 +1,26 @@
+﻿@model IEnumerable<ProductModel>
+
+
+
+<table class="table table-striped-columns">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Produto</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Preço</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var product in Model)
+        {
+            <tr>
+                <th scope="row">@product.Id</th>
+                <td>@product.Nome</td>
+                <td>@product.Descricao</td>
+                <td>@product.Preco</td>
+            </tr>
+        }
+        
+    </tbody>
+</table>
